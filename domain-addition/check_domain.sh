@@ -1,6 +1,6 @@
 #!/bin/sh
 # Nagios plugin for checking a domain name expiration date
-#
+# whois required for this script to run
 # Copyright (c) 2005 Tomàs Núñez Lirola <tnunez@criptos.com> (Original Author),
 # Copyright (c) 2009-2016 Elan Ruusamäe <glen@pld-linux.org> (Current Maintainer)
 #
