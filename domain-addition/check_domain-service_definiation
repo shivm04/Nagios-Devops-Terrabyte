@@ -4,7 +4,6 @@ define host {
         alias                           Company_Domain       ; A longer name for the server, For example
         display_name                    Company_Domain            ; Inherit default values from a template
         address                         127.0.0.1     ; IP address of Remote Linux host, For example
-        hostgroups                      Podup_Websites_checks      ; Host group name
         max_check_attempts              1
         check_interval                  10
         retry_interval                  5
