@@ -1,0 +1,5 @@
+define command{
+
+        command_name    check_local_sslcrt_expiry
+        command_line    $USER1$/check_sslcrt_expiry -w $ARG1$ -c $ARG2$ -u $ARG3$
+        }
