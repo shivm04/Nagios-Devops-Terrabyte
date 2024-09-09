@@ -1,4 +1,4 @@
-#Install the NRPE on remote server and main nagios server
+# Install the NRPE on remote server and main nagios server
 
 ## Update the system
 ```
@@ -130,7 +130,7 @@ cfg_dir=/usr/local/nagios/etc/servers/
   
 ```
 
-### Once the file is added then check the nagios config valid or not
+## Once the file is added then check the nagios config valid or not
 ```
 sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
 ```
