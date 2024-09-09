@@ -45,12 +45,12 @@ cfg_dir=/usr/local/nagios/etc/servers/
 
 ## Create a remote server monitoring configuration file on main nagios server
 ```
-cd /usr/local/nagios/etc/servers
-vi remote-server.cfg
+ cd /usr/local/nagios/etc/servers
+ vi remote-server.cfg
 
-Add the below content in file , change the remote server IP
+ Add the below content in file , change the remote server IP
 
-define host {
+ define host {
 
     use                     linux-server            ; Name of host template to use
                                                     ; This host definition will inherit all variables that are defined
@@ -65,103 +65,72 @@ define host {
     notification_interval   15
     notification_period     24x7
 
-}
+ }
 
-
-
-# Define a service to "ping" the remote machine
-
-define service {
+ define service {
 
     use                     generic-service     ; Name of service template to use
     host_name               remote-server
     service_description     PING
     check_command           check_ping!100.0,20%!500.0,60%
-}
+ }
 
-# Define a service to check the disk space of the root partition
-# on the remote machine.  Warning if < 20% free, critical if
-# < 10% free space on partition.
-
-define service {
+ define service {
 
     use                     generic-service           ; Name of service template to use
     host_name               remote-server
     service_description     Root Partition
     check_command           check_nrpe!check_disk
-}
+ }
 
-# Define a service to check the number of currently logged in
-# users on the remote machine.  Warning if > 20 users, critical
-# if > 50 users.
 
-define service {
+ define service {
 
     use                     generic-service           ; Name of service template to use
     host_name               remote-server
     service_description     Current Users
     check_command           check_nrpe!check_users
-}
+ }
 
-# Define a service to check the number of currently running procs
-# on the remote machine.  Warning if > 250 processes, critical if
-# > 400 processes.
-
-define service {
+ define service {
 
     use                     generic-service           ; Name of service template to use
     host_name               remote-server
     service_description     Total Processes
     check_command           check_nrpe!check_total_procs
-}
+ }
 
-# Define a service to check the load on the remote machine.
 
-define service {
+  define service {
 
     use                     generic-service           ; Name of service template to use
     host_name               remote-server
     service_description     Current Load
     check_command           check_nrpe!check_load
-}
+ }
 
-
-# Define a service to check SSH on the remote machine.
-# Disable notifications for this service by default, as not all users may have SSH enabled.
-
-define service {
+ define service {
 
     use                     generic-service           ; Name of service template to use
     host_name               remote-server
     service_description     SSH
     check_command           check_nrpe!check_ssh
     notifications_enabled   1
-}
+  }
 
-# Define a service to check HTTP on the remote machine.
-# Disable notifications for this service by default, as not all users may have HTTP enabled.
 
-define service {
+ define service {
 
     use                     generic-service           ; Name of service template to use
     host_name               remote-server
     service_description     HTTP
     check_command           check_tcp!80
     notifications_enabled   1
-}
-
-#define service {
-
-#    use                     generic-service           ; Name of service template to use
-#    host_name               remote-server
-#    service_description     check jenkins service
-#    check_command           check_nrpe!check_jenkins_status
-#    notifications_enabled   1
-#}
-
+  }
+  
 ```
 
-### Once the file is added then check the nagios config valid or not 
+### Once the file is added then check the nagios config valid or not
 ```
 sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
 ```
