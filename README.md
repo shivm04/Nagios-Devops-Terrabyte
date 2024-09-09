@@ -38,11 +38,11 @@
 ```
 
 ## Step 6: Install Nagios Plugins
-    ```
+   
        sudo apt update
        sudo apt install nagios-plugins
        cp /usr/lib/nagios/plugins/* /usr/local/nagios/libexec/
-    ```
+
 
 ## Step 7: Verify Nagios Configuration
    ```
@@ -73,7 +73,7 @@
    ```
 
 ## Step 12: Final Restart of Nagios and Apache
-    ```
+    
       sudo systemctl restart nagios
       sudo systemctl restart apache2
-    ```
+    
