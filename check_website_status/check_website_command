@@ -1,0 +1,5 @@
+define command{
+
+        command_name    check_local_website_status
+        command_line    $USER1$/check_website_status -u $ARG1$ -k $ARG2$ -c $ARG3$
+        }
