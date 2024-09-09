@@ -1,16 +1,16 @@
 # Nagios Installation Guide for Ubuntu
 
 ## Step 1: Update and Upgrade the System
-`sudo apt update && apt upgrade -y`
+```sudo apt update && apt upgrade -y```
 
 ## Step 2: Install Required Dependencies
-`sudo apt install autoconf gcc libc6 make wget unzip apache2 apache2-utils php libgd-dev libmcrypt-dev libssl-dev bc gawk dc build-essential snmp libnet-snmp-perl gettext`
+```sudo apt install autoconf gcc libc6 make wget unzip apache2 apache2-utils php libgd-dev libmcrypt-dev libssl-dev bc gawk dc build-essential snmp libnet-snmp-perl gettext```
 
 ## Step 3: Create Nagios User and Groups
-`sudo useradd -m -s /bin/bash nagios
-sudo groupadd nagcmd
-sudo usermod -a -G nagcmd nagios
-sudo usermod -a -G nagcmd www-data`
+```sudo useradd -m -s /bin/bash nagios
+   sudo groupadd nagcmd
+   sudo usermod -a -G nagcmd nagios
+   sudo usermod -a -G nagcmd www-data```
 
 ## Step 4: Download and Extract Nagios
 `cd /tmp
