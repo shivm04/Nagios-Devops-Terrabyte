@@ -1,0 +1,52 @@
+define host {
+        use                             linux-server  ; Inherit default values
+        host_name                       company_ssl            ; Inherit default values from a templat
+        alias                           company_ssl       ; A longer name for the server, For example
+        display_name                    company_ssl            ; Inherit default values from a template
+        address                         127.0.0.1     ; IP address of Remote Linux host, For example
+        max_check_attempts              1
+        check_interval                  10
+        retry_interval                  5
+        check_period                    24x7
+        process_perf_data               1
+        notification_interval           15
+        first_notification_delay        0
+        notification_period             24x7
+        notification_options            d,u,r
+        notifications_enabled           1
+        register                        1
+}
+
+define service{
+        use                             local-service         ; Name of service template to use
+        host_name                       company_ssl
+        service_description             www.udemy.com
+        check_command                   check_local_sslcrt_expiry!5!2!www.udemy.com
+        check_interval                  60
+        retry_interval                  30
+        notification_interval           60
+        notifications_enabled           1
+        register                        1
+        }
+define service{
+        use                             local-service       ; Name of service template to use
+        host_name                       company_ssl
+        service_description             drive.google.com
+        check_command                   check_local_sslcrt_expiry!5!2!drive.google.com
+        check_interval                  60
+        retry_interval                  30
+        notification_interval           60
+        notifications_enabled           1
+        register                        1
+        }
+define service{
+        use                             local-service         ; Name of service template to use
+        host_name                       company_ssl
+        service_description             www.youtube.com
+        check_command                   check_local_sslcrt_expiry!5!2!www.youtube.com
+        check_interval                  60
+        retry_interval                  30
+        notification_interval           60
+        notifications_enabled           1
+        register                        1
+        }
